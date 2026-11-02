@@ -45,8 +45,9 @@ export function useHandCursor() {
       return
     }
 
-    // Hand visibility threshold
-    if ((chosenHand.visibility || 1) < 0.35) {
+    // Hand visibility threshold (tolerante para evitar parpadeos)
+    const vis = chosenHand.visibility ?? 1
+    if (vis < 0.2) {
       handCursorState.active = false
       return
     }

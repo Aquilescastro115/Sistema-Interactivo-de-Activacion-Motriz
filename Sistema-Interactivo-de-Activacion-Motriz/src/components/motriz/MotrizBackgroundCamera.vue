@@ -9,6 +9,7 @@ const canvasRef = ref(null)
 let animId = null
 
 const {
+  stream,
   isCameraActive,
   isLoadingDetector,
   cameraError,
@@ -33,40 +34,44 @@ function startCameraLoop() {
   if (animId) cancelAnimationFrame(animId)
 
   const loop = (timestamp) => {
-    const video = videoRef.value
-    const canvas = canvasRef.value
+    try {
+      const video = videoRef.value
+      const canvas = canvasRef.value
 
-    // Auto-resume playback if paused or reconnected
-    if (video) {
-      if (video.paused && stream.value && stream.value.active) {
-        video.play().catch(() => {})
-      }
-      if (stream.value && video.srcObject !== stream.value) {
-        video.srcObject = stream.value
-        video.play().catch(() => {})
-      }
-    }
-
-    if (video && canvas && video.readyState >= 2) {
-      const ctx = canvas.getContext('2d')
-      if (canvas.width !== window.innerWidth || canvas.height !== window.innerHeight) {
-        canvas.width = window.innerWidth
-        canvas.height = window.innerHeight
+      // Auto-resume playback if paused or reconnected
+      if (video) {
+        if (video.paused && stream.value && stream.value.active) {
+          video.play().catch(() => {})
+        }
+        if (stream.value && video.srcObject !== stream.value) {
+          video.srcObject = stream.value
+          video.play().catch(() => {})
+        }
       }
 
-      const w = canvas.width
-      const h = canvas.height
+      if (video && canvas && video.readyState >= 2) {
+        const ctx = canvas.getContext('2d')
+        if (canvas.width !== window.innerWidth || canvas.height !== window.innerHeight) {
+          canvas.width = window.innerWidth
+          canvas.height = window.innerHeight
+        }
 
-      // Process MediaPipe pose & update hand cursor
-      processVideoFrame(video, w, h, timestamp)
+        const w = canvas.width
+        const h = canvas.height
 
-      // Clear overlay canvas
-      ctx.clearRect(0, 0, w, h)
+        // Process MediaPipe pose & update hand cursor
+        processVideoFrame(video, w, h, timestamp)
 
-      // Draw full body skeleton with sticks ("palitos") and joints ("articulaciones")
-      if (bodyDetected.value && bodyState.mapped?.length) {
-        drawBodySkeleton(ctx)
+        // Clear overlay canvas
+        ctx.clearRect(0, 0, w, h)
+
+        // Draw full body skeleton with sticks ("palitos") and joints ("articulaciones")
+        if (bodyDetected.value && bodyState.mapped?.length) {
+          drawBodySkeleton(ctx)
+        }
       }
+    } catch (loopErr) {
+      console.warn('Error en frame de cámara:', loopErr)
     }
 
     animId = requestAnimationFrame(loop)
