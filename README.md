@@ -1,1 +1,1 @@
-# Sistema-Interactivo-de-Activaci-n-Motriz
+# Sistema-Interactivo-de-Activacion-Motriz
