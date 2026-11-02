@@ -1,0 +1,194 @@
+/* ==========================================================================
+   SISTEMA DE ASISTENCIA MOTRIZ - TEMA VISUAL
+   Paleta de alta visibilidad: Rojo Carmesí, Crema Marfil, Acentos Dorados
+   Diseño ergonómico para adultos mayores con botones táctiles/gestuales 3D
+   ========================================================================== */
+
+:root {
+  --motriz-bg-warm: #F7F3EC;
+  --motriz-bg-cream: #EDE4D8;
+  --motriz-bg-card: #FFFDF9;
+  --motriz-card-border: #E8DDD0;
+  
+  --motriz-red-primary: #8C1D2C;
+  --motriz-red-hover: #A62435;
+  --motriz-red-dark: #6B1320;
+  --motriz-red-glow: rgba(140, 29, 44, 0.28);
+  
+  --motriz-amber: #D97706;
+  --motriz-gold: #F59E0B;
+  --motriz-gold-light: #FDE68A;
+  
+  --motriz-text-main: #3D1B20;
+  --motriz-text-muted: #7E6A6D;
+  --motriz-text-light: #A38F92;
+  
+  --motriz-shadow-sm: 0 4px 10px rgba(70, 30, 20, 0.08);
+  --motriz-shadow-md: 0 8px 24px rgba(70, 30, 20, 0.12);
+  --motriz-shadow-lg: 0 14px 34px rgba(70, 30, 20, 0.16);
+  --motriz-pill-shadow: 0 8px 20px rgba(140, 29, 44, 0.35);
+}
+
+/* Global Reset & Base */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  background-color: var(--motriz-bg-warm);
+  color: var(--motriz-text-main);
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+/* 3D Cápsula Primaria - Carmesí */
+.btn-motriz-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(180deg, #A82435 0%, #8C1D2C 50%, #6E1220 100%);
+  color: #FFFFFF !important;
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  padding: 16px 36px;
+  border-radius: 9999px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    inset 0 2px 2px rgba(255, 255, 255, 0.5),
+    inset 0 -3px 4px rgba(0, 0, 0, 0.3),
+    0 8px 22px rgba(140, 29, 44, 0.42);
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  text-decoration: none;
+}
+
+.btn-motriz-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: linear-gradient(180deg, #B52A3C 0%, #9B2030 50%, #7B1524 100%);
+  box-shadow: 
+    inset 0 2px 3px rgba(255, 255, 255, 0.6),
+    0 12px 28px rgba(140, 29, 44, 0.5);
+}
+
+.btn-motriz-primary:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 
+    inset 0 3px 5px rgba(0, 0, 0, 0.4),
+    0 4px 10px rgba(140, 29, 44, 0.3);
+}
+
+/* 3D Cápsula Secundaria - Crema / Marfil */
+.btn-motriz-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8F1E7 60%, #EDE2D3 100%);
+  color: var(--motriz-red-primary) !important;
+  font-weight: 800;
+  font-size: 1.22rem;
+  letter-spacing: 0.02em;
+  padding: 16px 32px;
+  border-radius: 9999px;
+  border: 2px solid #E2D2C1;
+  box-shadow: 
+    inset 0 2px 2px rgba(255, 255, 255, 0.9),
+    inset 0 -2px 3px rgba(160, 130, 110, 0.25),
+    0 8px 20px rgba(90, 60, 50, 0.12);
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
+}
+
+.btn-motriz-secondary:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAF5EE 60%, #F2E8DC 100%);
+  box-shadow: 
+    inset 0 2px 3px rgba(255, 255, 255, 1),
+    0 12px 26px rgba(90, 60, 50, 0.18);
+}
+
+.btn-motriz-secondary:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 
+    inset 0 2px 4px rgba(120, 90, 70, 0.25),
+    0 4px 10px rgba(90, 60, 50, 0.1);
+}
+
+/* Botón Circular de Acción (Configuración, Ayuda, Cerrar) */
+.btn-round-action {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F5EDE3 70%, #E9DDCF 100%);
+  border: 2.5px solid #DDCFBE;
+  color: var(--motriz-red-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 
+    inset 0 2px 1px rgba(255, 255, 255, 0.9),
+    0 6px 14px rgba(70, 40, 30, 0.12);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-round-action:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 8px 18px rgba(70, 40, 30, 0.2);
+}
+
+.btn-round-action:active {
+  transform: scale(0.95) translateY(1px);
+}
+
+/* Tarjeta Contenedora Motriz */
+.motriz-card {
+  background: var(--motriz-bg-card);
+  border: 2px solid var(--motriz-card-border);
+  border-radius: 28px;
+  box-shadow: var(--motriz-shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fondo degradado ambiental suave */
+.motriz-ambient-bg {
+  background-color: #F8F3EC;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.8) 0%, transparent 70%),
+    radial-gradient(circle at 50% 100%, rgba(220, 205, 190, 0.3) 0%, transparent 80%);
+}
+
+/* Modal Overlay */
+.motriz-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(45, 20, 25, 0.55);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+  animation: motrizFadeIn 0.25s ease-out;
+}
+
+@keyframes motrizFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes motrizPopIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  70% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes motrizPulseGlow {
+  0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.6)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 24px rgba(245, 158, 11, 0.95)); }
+}

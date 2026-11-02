@@ -388,7 +388,7 @@ function shutdown() {
   cancelAnimationFrame(frameId)
   if (countdownTimer) window.clearInterval(countdownTimer)
   window.removeEventListener('resize', resizeCanvas)
-  stream?.getTracks().forEach((track) => track.stop())
+  // No detenemos el hardware de la cámara para que el menú principal siga funcionando fluidamente
   detector?.close?.()
 }
 
